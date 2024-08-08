@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de marca</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5 mt-3" th:text="${marca.id == null} ? 'Nueva marca' : 'Editar marca'"></h1>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="form-container w-50">
+                <form th:action="@{/marca}" th:object="${marca}" method="post">
+                    <input type="hidden" th:field="*{id}" />
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" th:field="*{nombreenae}" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary mt-3 mb-3" type="submit">Guardar</button>
+                    <a class="btn btn-secondary mt-3 mb-3" href="/marca">Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
