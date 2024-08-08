@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${departamento.id == null} ? 'Nuevo Departamento' : 'Editar Departamento'"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center form-title" th:text="${departamento.id == null} ? 'Nuevo Departamento' : 'Editar Departamento'"></h1>
+        <div class="d-flex justify-content-center">
+            <div class="form-container w-50">
+                <form th:action="@{/departamento}" th:object="${departamento}" method="post">
+                    <input type="hidden" th:field="*{id}" />
+                    <div class="form-group">
+                        <label for="nombreoucr">Nombre:</label>
+                        <input type="text" id="nombreoucr" th:field="*{nombreenae}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefonooucr">Teléfono:</label>
+                        <input type="text" id="telefonooucr" th:field="*{telefonoenae}" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="jefeoucr">Jefe:</label>
+                        <input type="text" id="jefeoucr" th:field="*{jefeenae}" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                    <a href="#" th:href="@{/departamento}" class="btn btn-secondary mt-3 ml-2">Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

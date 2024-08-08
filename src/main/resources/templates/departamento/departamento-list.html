@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Departamentos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        .btn-container {
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Listado de Departamentos</h1>
+        <div class="btn-container d-flex justify-content-end">
+            <a class="btn btn-primary btn-custom" th:href="@{/departamento/nuevo}">Nuevo</a>
+            <a class="btn btn-secondary" href="/">Inicio</a>
+        </div>
+        <div class="table-container">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Jefe</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="departamento : ${departamento}">
+                        <td th:text="${departamento.id}"></td>
+                        <td th:text="${departamento.nombreenae}"></td>
+                        <td th:text="${departamento.telefonoenae}"></td>
+                        <td th:text="${departamento.jefeenae}"></td>
+                        <td>
+                            <a class="btn btn-info btn-sm mt-1 mb-1" th:href="@{/departamento/editar/{id}(id=${departamento.id})}">Editar</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1" th:href="@{/departamento/eliminar/{id}(id=${departamento.id})}">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
